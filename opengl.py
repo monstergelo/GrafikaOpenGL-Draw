@@ -11,8 +11,15 @@ def draw():                                            # ondraw is called all th
     glLoadIdentity()                                   # reset position
     refresh2d(width, height)                           # set mode to 2d
     glColor3f(0.0, 0.0, 1.0)                           # set color to blue
-    draw_tail()
+
+    # head section
+    draw_head()
+    draw_upper_jaw()
+    draw_lower_jaw()
+    draw_horn()
     draw_wing_triangle_strip()
+    # tail section
+    draw_tail()
     glutSwapBuffers()                                  # important for double buffering
 
 
@@ -93,8 +100,96 @@ def draw_wing_triangle_strip():
     glVertex2f(347, 443);
     glVertex2f(450, 463);
     glVertex2f(337, 391);
-    glVertex2f(483, 442);
+    glVertex2f(508, 445);
     glVertex2f(388, 383);
+    glEnd();
+
+def draw_head():
+    x = 0
+    y = 0
+    glBegin(GL_TRIANGLE_STRIP);
+
+    glVertex2f(508, 445);
+    glVertex2f(594, 445);
+    glVertex2f(503, 465);
+    glVertex2f(563, 468);
+    glVertex2f(503, 465);
+    glVertex2f(548, 485);
+    glVertex2f(500, 476);
+    glVertex2f(544, 494);
+    glVertex2f(498, 496);
+    glVertex2f(555, 500);
+    glVertex2f(502, 515);
+    glVertex2f(566, 504);
+    glVertex2f(514, 527);
+    glVertex2f(574, 505);
+    glVertex2f(528, 540);
+    glVertex2f(580, 505);
+    glVertex2f(541, 550);
+    glVertex2f(587, 498);
+    glVertex2f(562, 555);
+    glVertex2f(596, 496);
+    glVertex2f(583, 563);
+    glVertex2f(609, 495);
+    glVertex2f(603, 561);
+    glVertex2f(616, 489);
+    glVertex2f(622, 551);
+    glVertex2f(619, 485);
+    glVertex2f(636, 539);
+
+
+    glEnd();
+
+def draw_upper_jaw():
+    x = 0
+    y = 0
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex2f(636, 539);
+    glVertex2f(628, 514);
+    glVertex2f(646, 532);
+    glVertex2f(637, 511);
+    glVertex2f(654, 528);
+    glVertex2f(644, 510);
+    glVertex2f(661, 521);
+    glVertex2f(649, 504);
+    glVertex2f(667, 514);
+    glVertex2f(653, 494);
+    glVertex2f(671, 504);
+
+
+    glEnd();
+
+def draw_lower_jaw():
+    x = 0
+    y = 0
+    glBegin(GL_TRIANGLE_STRIP);
+
+    glVertex2f(620, 485);
+    glVertex2f(620, 504);
+    glVertex2f(623, 480);
+    glVertex2f(634, 499);
+    glVertex2f(631, 479);
+    glVertex2f(642, 490);
+    glVertex2f(642, 478);
+    glVertex2f(648, 481);
+
+    glEnd();
+
+def draw_horn():
+    x = 0
+    y = 0
+    glBegin(GL_TRIANGLE_STRIP);
+
+    glVertex2f(562, 555);
+    glVertex2f(584, 560);
+    glVertex2f(556, 564);
+    glVertex2f(565, 574);
+    glVertex2f(549, 574);
+    glVertex2f(552, 584);
+    glVertex2f(540, 581);
+    glVertex2f(543, 592);
+    glVertex2f(527, 591);
+    glVertex2f(530, 603);
     glEnd();
 
 def draw_tail():
@@ -115,9 +210,6 @@ def draw_tail():
     glVertex2f( 325-x, y-430);    #A
     glVertex2f( 395-x, y-463);    #A
     glVertex2f( 388-x, y-383);    #A
-
-
-
     glEnd();
 
 # initialization
