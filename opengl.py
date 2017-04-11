@@ -11,8 +11,7 @@ def draw():                                            # ondraw is called all th
     glLoadIdentity()                                   # reset position
     refresh2d(width, height)                           # set mode to 2d
     glColor3f(0.0, 0.0, 1.0)                           # set color to blue
-    draw_right_wing(365,210)                                  
-    draw_dragon_head()
+    draw_tail()
     glutSwapBuffers()                                  # important for double buffering
 
 
@@ -20,32 +19,6 @@ def drawPlane():
     glBegin(GL)
 
 
-def draw_dragon_head():
-    # start drawing a rectangle
-    glBegin(GL_POLYGON)
-    glVertex2f(295, 460)
-    glVertex2f(295, 505)
-    glVertex2f(240, 510)
-    glVertex2f(160, 495)
-    glVertex2f(80, 510)
-    glVertex2f(75, 525)
-    glVertex2f(40, 545)
-    glVertex2f(30, 540)
-    glVertex2f(50, 525)
-    glVertex2f(45, 500)
-    glVertex2f(25, 495)
-    glVertex2f(23, 514)
-    glVertex2f(18, 513)
-    glVertex2f(11, 494)
-    glVertex2f(42, 464)
-    glVertex2f(16, 408)
-    glVertex2f(53, 456)
-    glVertex2f(77, 461)
-    glVertex2f(96, 379)
-    glVertex2f(99, 463)
-    glVertex2f(163, 444)
-    glVertex2f(238, 463)
-    glEnd()
 
 def draw_triangle(x, y, width, height):
     glBegin(GL_TRIANGLES)                                  # start drawing a rectangle
@@ -54,14 +27,6 @@ def draw_triangle(x, y, width, height):
     glVertex2f(x + width, y + height)                  # top right point                       # top left point
     glEnd()
 
-def draw_right_wing(x,y):
-    glBegin(GL_TRIANGLE_FAN);
-    glVertex2f(105+x, 380+y);    # A
-    glVertex2f(11+x , 104+y);    # B
-    glVertex2f(153+x,  12+y);    # C
-    glVertex2f(295+x, 167+y);    # D
-    glVertex2f(541+x, 339+y);    # E
-    glEnd();    
 
 def refresh2d(width, height):
     glViewport(0, 0, width, height)
@@ -70,6 +35,29 @@ def refresh2d(width, height):
     glOrtho(0.0, width, 0.0, height, 0.0, 1.0)
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
+
+def draw_tail():
+    x = 0
+    y = 768
+    glBegin(GL_TRIANGLE_STRIP);
+
+    glVertex2f( 175-x, y-529);    #A
+    glVertex2f( 115-x, y-600);    #B
+    glVertex2f( 135-x, y-600);    #C
+    glVertex2f( 120-x, y-665);    #D
+    glVertex2f( 155-x, y-667);    #E
+    glVertex2f( 176-x, y-700);    #F
+    glVertex2f( 220-x, y-660);    #G
+    glVertex2f( 268-x, y-663);    #A
+    glVertex2f( 280-x, y-583);    #A
+    glVertex2f( 362-x, y-476);    #A
+    glVertex2f( 325-x, y-430);    #A
+    glVertex2f( 395-x, y-463);    #A
+    glVertex2f( 388-x, y-383);    #A
+
+
+
+    glEnd();
 
 # initialization
 glutInit()                                             # initialize glut
