@@ -20,6 +20,11 @@ def draw():                                            # ondraw is called all th
     draw_wing_triangle_strip()
     # tail section
     draw_tail()
+
+    glColor3f(255.0, 255.0, 255.0)
+    draw_eye()
+
+
     glutSwapBuffers()                                  # important for double buffering
 
 
@@ -190,6 +195,19 @@ def draw_horn():
     glVertex2f(543, 592);
     glVertex2f(527, 591);
     glVertex2f(530, 603);
+
+    glEnd();
+
+def draw_eye():
+    x = 0
+    y = 0
+    glBegin(GL_POLYGON);
+
+    glVertex2f(599, 546);
+    glVertex2f(622, 532);
+    glVertex2f(623, 521);
+    glVertex2f(602, 529);
+    
     glEnd();
 
 def draw_tail():
