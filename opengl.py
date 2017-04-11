@@ -12,6 +12,7 @@ def draw():                                            # ondraw is called all th
     refresh2d(width, height)                           # set mode to 2d
     glColor3f(0.0, 0.0, 1.0)                           # set color to blue
     draw_tail()
+    draw_wing_triangle_strip()
     glutSwapBuffers()                                  # important for double buffering
 
 
@@ -35,6 +36,66 @@ def refresh2d(width, height):
     glOrtho(0.0, width, 0.0, height, 0.0, 1.0)
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
+
+def draw_wing_line():
+    x = 0
+    y = 768
+    glBegin(GL_LINE_STRIP);
+    glVertex2f(56-x,625);
+    glVertex2f(129-x,607);
+    glVertex2f(129-x,607);
+    glVertex2f(158-x,593);
+    glVertex2f(172-x,576);
+    glVertex2f(151-x,511);
+    glVertex2f(171-x,529);
+    glVertex2f(166-x,492);
+    glVertex2f(176-x,534);
+    glVertex2f(191-x,536);
+    glVertex2f(212-x,529);
+    glVertex2f(222-x,514);
+    glVertex2f(211-x,480);
+    glVertex2f(205-x,462);
+    glVertex2f(211-x,434);
+    glVertex2f(214-x,461);
+    glVertex2f(238-x,477);
+    glVertex2f(290-x,490);
+    glVertex2f(312-x,473);
+    glVertex2f(324-x,453);
+    glVertex2f(342-x,453);
+    glVertex2f(333-x,403);
+    glVertex2f(343-x,378);
+    glVertex2f(388-x,383);
+    glVertex2f(508-x,441);
+    glVertex2f(433-x,475);
+    glVertex2f(425-x,494);
+    glVertex2f(454-x,581);
+    glVertex2f(459-x,611);
+    glVertex2f(420-x,648);
+    glVertex2f(315-x,677);
+    glVertex2f(56-x,625);
+    glEnd();
+
+
+def draw_wing_triangle_strip():
+    x = 0
+    y = 768
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex2f(61, 627);
+    glVertex2f(171, 579);
+    glVertex2f(195, 661);
+    glVertex2f(376, 669);
+    glVertex2f(148, 508);
+    glVertex2f(453, 626);
+    glVertex2f(220, 493);
+    glVertex2f(447, 548);
+    glVertex2f(213, 434);
+    glVertex2f(427, 483);
+    glVertex2f(347, 443);
+    glVertex2f(450, 463);
+    glVertex2f(337, 391);
+    glVertex2f(483, 442);
+    glVertex2f(388, 383);
+    glEnd();
 
 def draw_tail():
     x = 0
