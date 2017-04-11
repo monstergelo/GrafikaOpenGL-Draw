@@ -3,7 +3,7 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
 window = 0                                             # glut window number
-width, height = 500, 400                               # window size
+width, height = 1200, 720                               # window size
 
 def draw():                                            # ondraw is called all the time
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) # clear the screen
@@ -11,8 +11,8 @@ def draw():                                            # ondraw is called all th
     refresh2d(width, height)                           # set mode to 2d
         
     glColor3f(0.0, 0.0, 1.0)                           # set color to blue
-    draw_triangle(10, 10, 200, 100)                        # rect at (10, 10) with width 200, height 100
-    
+    draw_right_wing(365,210)                                  
+
     glutSwapBuffers()                                  # important for double buffering
 
 def drawPlane():
@@ -23,7 +23,16 @@ def draw_triangle(x, y, width, height):
     glVertex2f(x, y)                                   # bottom left point
     glVertex2f(x + width, y)                           # bottom right point
     glVertex2f(x + width, y + height)                  # top right point                       # top left point
-    glEnd()    
+    glEnd()
+
+def draw_right_wing(x,y):
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(105+x, 380+y);    # A
+    glVertex2f(11+x , 104+y);    # B
+    glVertex2f(153+x,  12+y);    # C
+    glVertex2f(295+x, 167+y);    # D
+    glVertex2f(541+x, 339+y);    # E
+    glEnd();    
 
 def refresh2d(width, height):
     glViewport(0, 0, width, height)
