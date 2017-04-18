@@ -13,6 +13,10 @@ def draw():                                            # ondraw is called all th
     refresh2d(width, height)                           # set mode to 2d
     glColor3f(0.0, 0.0, 1.0)                           # set color to blue
     draw_rainbow(600, 100, 100, 600, 1.5)
+    # draw_sun_light(600, 500, 20, 100)
+    glColor3f(1.0, 1.0, 1.0)
+    draw_sun(600, 500, 20, 100)
+
     # # head section
     # draw_head()
     # draw_upper_jaw()
@@ -164,6 +168,37 @@ def draw_rainbow(offset_x, offset_y, width, radius, curve_factor):
 			#lowerbound----------------------------------------------------------
 			r -= segment_width
 		glEnd();
+
+def draw_sun(x, y, slices, radius):
+	twicePi = 2.0 * math.pi
+	glBegin(GL_TRIANGLE_FAN)
+	glVertex2f(x, y)
+	for i in range (0, slices+1):
+		glColor3f(1.0, 0.72, 0.07)
+		cx = x + (radius * math.cos(i * twicePi / slices))
+		cy = y + (radius * math.sin(i * twicePi / slices))
+		glVertex2f(cx, cy)
+	glEnd()
+
+# def draw_sun_light(x, y, slices, radius):
+# 	twicePi = 2.0 * math.pi
+# 	glColor3f(0.0, 0.0, 0.0)
+# 	glBegin(GL_TRIANGLE_FAN)
+# 	glVertex2f(x, y)
+# 	for i in range (0, slices+1):
+# 		glColor3f(0.0, 0.0, 0.0)
+# 		cx = x + (radius * math.cos(i * twicePi / slices))
+# 		cy = y + (radius * math.sin(i * twicePi / slices))
+# 		glVertex2f(cx, cy)
+# 	glColor3f(1.0, 0.72, 0.07)
+# 	glVertex2f(cx, cy)
+# 	for i in range (slices+1, 50):
+# 		glColor3f(0.0, 0.0, 0.0)
+# 		cx = x + (radius * math.cos(i * twicePi / slices))
+# 		cy = y + (radius * math.sin(i * twicePi / slices))
+# 		glVertex2f(cx, cy)
+# 	glEnd()
+
 
 def draw_head():
     x = 0
