@@ -1,6 +1,7 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
+import math
 
 window = 0                                             # glut window number
 width, height = 1200, 768                               # window size
@@ -11,29 +12,28 @@ def draw():                                            # ondraw is called all th
     glLoadIdentity()                                   # reset position
     refresh2d(width, height)                           # set mode to 2d
     glColor3f(0.0, 0.0, 1.0)                           # set color to blue
+    draw_rainbow(600, 100, 100, 600, 1.5)
+    # # head section
+    # draw_head()
+    # draw_upper_jaw()
+    # draw_lower_jaw()
+    # draw_horn()
+    # draw_wing_triangle_strip()
 
-    # head section
-    draw_head()
-    draw_upper_jaw()
-    draw_lower_jaw()
-    draw_horn()
-    draw_wing_triangle_strip()
+    # # body section
+    # draw_body()
+    # draw_front()
+    # draw_front_leg()
+    # draw_back_leg()
 
-    # body section
-    draw_body()
-    draw_front()
-    draw_front_leg()
-    draw_back_leg()
+    # # tail section
+    # draw_tail()
 
-    # tail section
-    draw_tail()
-
-    glColor3f(255.0, 255.0, 255.0)
-    draw_eye()
+    # glColor3f(255.0, 255.0, 255.0)
+    # draw_eye()
 
     # important for double buffering
     glutSwapBuffers()
-
 
 def drawPlane():
     glBegin(GL)
@@ -134,6 +134,37 @@ def draw_wing_triangle_strip():
     glEnd()
 
 
+def draw_rainbow(offset_x, offset_y, width, radius, curve_factor):
+	segment_width = float(width/6)
+	true_r = radius
+	cx = offset_x
+	cy = offset_y
+	for ii in range(0, 51):
+		glBegin(GL_QUAD_STRIP);
+		r = 600
+		for i  in range(0,6):
+			if(i == 0) : glColor3f(1.0,0.0,1.0);
+			elif(i == 1) : glColor3f(0.0,0.0,1.0);
+			elif(i == 2) : glColor3f(0.0,1.0,1.0);
+			elif(i == 3) : glColor3f(0.0,1.0,0.0);
+			elif(i == 4) : glColor3f(1.0,1.0,0.0);
+			elif(i == 5) : glColor3f(1.0,0.0,0.0);
+			#leftbound***********************************************************
+			theta = 2.0 * 3.1415926 * float(ii) / float(100) #get the current angle 
+			x = float(r * math.cos(theta) * curve_factor); #calculate the x component 
+			y = float(r * math.sin(theta)); #calculate the y component 
+			glVertex2f(x + cx, y + cy); #output vertex 
+			
+			#rightbound***********************************************************
+			theta = 2.0 * 3.1415926 * float(ii+1) / float(100) #get the current angle 
+			#upperbound----------------------------------------------------------
+			x = float(r * math.cos(theta) * curve_factor); #calculate the x component 
+			y = float(r * math.sin(theta)); #calculate the y component 
+			glVertex2f(x + cx, y + cy); #output vertex 
+			#lowerbound----------------------------------------------------------
+			r -= segment_width
+		glEnd();
+
 def draw_head():
     x = 0
     y = 0
@@ -169,6 +200,17 @@ def draw_head():
 
     glEnd()
 
+def draw_test():
+	glBegin(GL_QUADS)
+	glColor3f(1.0,0.0,0.0);
+	glVertex2f(100.0, 200.0);
+	#blue color
+	glColor3f(0.0,0.0,1.0);
+	glVertex2f(100.0,100.0);
+	
+	glVertex2f(200.0,100.0);
+	glVertex2f(200.0, 200.0);
+	glEnd();
 
 def draw_upper_jaw():
     x = 0
