@@ -154,17 +154,17 @@ def draw_rainbow(offset_x, offset_y, width, radius, curve_factor):
 			elif(i == 4) : glColor3f(1.0,1.0,0.0);
 			elif(i == 5) : glColor3f(1.0,0.0,0.0);
 			#leftbound***********************************************************
-			theta = 2.0 * 3.1415926 * float(ii) / float(100) #get the current angle 
-			x = float(r * math.cos(theta) * curve_factor); #calculate the x component 
-			y = float(r * math.sin(theta)); #calculate the y component 
-			glVertex2f(x + cx, y + cy); #output vertex 
-			
+			theta = 2.0 * 3.1415926 * float(ii) / float(100) #get the current angle
+			x = float(r * math.cos(theta) * curve_factor); #calculate the x component
+			y = float(r * math.sin(theta)); #calculate the y component
+			glVertex2f(x + cx, y + cy); #output vertex
+
 			#rightbound***********************************************************
-			theta = 2.0 * 3.1415926 * float(ii+1) / float(100) #get the current angle 
+			theta = 2.0 * 3.1415926 * float(ii+1) / float(100) #get the current angle
 			#upperbound----------------------------------------------------------
-			x = float(r * math.cos(theta) * curve_factor); #calculate the x component 
-			y = float(r * math.sin(theta)); #calculate the y component 
-			glVertex2f(x + cx, y + cy); #output vertex 
+			x = float(r * math.cos(theta) * curve_factor); #calculate the x component
+			y = float(r * math.sin(theta)); #calculate the y component
+			glVertex2f(x + cx, y + cy); #output vertex
 			#lowerbound----------------------------------------------------------
 			r -= segment_width
 		glEnd();
@@ -242,7 +242,7 @@ def draw_test():
 	#blue color
 	glColor3f(0.0,0.0,1.0);
 	glVertex2f(100.0,100.0);
-	
+
 	glVertex2f(200.0,100.0);
 	glVertex2f(200.0, 200.0);
 	glEnd();
