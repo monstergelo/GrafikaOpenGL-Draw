@@ -32,6 +32,8 @@ xspeed = 0  # x rotation speed
 yspeed = 0  # y rotation speed
 
 z = -5.0  # depth into the screen.
+yTransform = 0.0
+xTransform = 0.0
 
 
 # white ambient light at half intensity (rgba)
@@ -117,10 +119,16 @@ def display():
 
     # Render a color-cube consisting of 6 quads with different colors
     glLoadIdentity()                 # Reset the model-view matrix
-    glTranslatef(1.5, 0.0, -7.0)  # Move right and into the screen
+    glTranslatef(0.0, 0.0, -7.0)  # Move right and into the screen
 
     # move z units out from the screen.
     glTranslatef(0.0, 0.0, z)
+
+    # move y units out from the screen.
+    glTranslatef(0.0, yTransform, 0.0)
+
+    # move x units out from the screen.
+    glTranslatef(xTransform, 0.0, 0.0)
 
     glRotatef(xrot, 1.0, 0.0, 0.0)         # Rotate On The X Axis
     glRotatef(yrot, 0.0, 1.0, 0.0)         # Rotate On The Y Axis
@@ -225,7 +233,7 @@ def timer(value):
 
 
 def keyPressed(key, x, y):
-    global light, filter, blend
+    global light, xTransform, yTransform
 
     key = ord(key)
 
@@ -239,16 +247,23 @@ def keyPressed(key, x, y):
         sys.exit()
     elif key == 108 or key == 76:  # switch the lighting.
         print("L/l pressed; light is: %d\n" % (light))
-
-    if light == 0:
-        light = 1
-    else:
-        light = 0      # switch the current value of light, between 0 and 1.
-    print("Light is now: %d\n" % (light))
-    if not(light):
-        glDisable(GL_LIGHTING)
-    else:
-        glEnable(GL_LIGHTING)
+        if light == 0:
+            light = 1
+        else:
+            light = 0      # switch the current value of light, between 0 and 1.
+        print("Light is now: %d\n" % (light))
+        if not(light):
+            glDisable(GL_LIGHTING)
+        else:
+            glEnable(GL_LIGHTING)
+    elif key == 97 or key == 65: # A or a.
+        xTransform += 0.02
+    elif key == 100 or key == 68: # D or d.
+        xTransform -= 0.02
+    elif key == 119 or key == 87: # W or w.
+        yTransform += 0.02
+    elif key == 115 or key == 83: # S or s.
+        yTransform -= 0.02
 
 # The function called whenever a normal key is pressed.
 
@@ -260,10 +275,10 @@ def specialKeyPressed(key, x, y):
     time.sleep(0.01)
 
     if key == GLUT_KEY_PAGE_UP:  # move the cube into the distance.
-        z -= 0.2
+        z -= 0.02
 
     elif key == GLUT_KEY_PAGE_DOWN:  # move the cube closer.
-        z += 0.2
+        z += 0.02
 
     elif key == GLUT_KEY_UP:  # decrease x rotation speed;
         xspeed -= 0.1
