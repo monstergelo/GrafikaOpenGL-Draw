@@ -77,42 +77,42 @@ def display():
     glBegin(GL_QUADS);                # Begin drawing the color cube with 6 quads
     # Top face (y = 1.0)
     # Define vertices in counter-clockwise (CCW) order with normal pointing out
-    glColor3f(0.0, 1.0, 0.0);     # Green
+    #glColor3f(0.0, 1.0, 0.0);     # Green
     glTexCoord2f(0.0, 0.0); glVertex3f( 0.6, 1.0, -0.05);
     glTexCoord2f(0.473, 0.0); glVertex3f(-0.6, 1.0, -0.05);
     glTexCoord2f(0.473, 0.05); glVertex3f(-0.6, 1.0,  0.05);
     glTexCoord2f(0.0, 0.05); glVertex3f( 0.6, 1.0,  0.05);
 
     # Bottom face (y = -1.0)
-    glColor3f(1.0, 0.5, 0.0);     # Orange
+    #glColor3f(1.0, 0.5, 0.0);     # Orange
     glTexCoord2f(0.0, 0.0);glVertex3f( 0.6, -1.0,  0.05);
     glTexCoord2f(0.473, 0.0);glVertex3f(-0.6, -1.0,  0.05);
     glTexCoord2f(0.473, 0.05);glVertex3f(-0.6, -1.0, -0.05);
     glTexCoord2f(0.0, 0.05);glVertex3f( 0.6, -1.0, -0.05);
 
     # Front face  (z = 1.0)
-    glColor3f(1.0, 0.0, 0.0);     # Red
+    #glColor3f(1.0, 0.0, 0.0);     # Red
     glTexCoord2f(0.0, 0.0); glVertex3f( 0.6,  1.0, 0.05);
     glTexCoord2f(0.473, 0.0); glVertex3f(-0.6,  1.0, 0.05);
     glTexCoord2f(0.473, 1.0); glVertex3f(-0.6, -1.0, 0.05);
     glTexCoord2f(0.0, 1.0); glVertex3f( 0.6, -1.0, 0.05);
 
     # Back face (z = -1.0)
-    glColor3f(1.0, 1.0, 0.0);     # Yellow
+    #glColor3f(1.0, 1.0, 0.0);     # Yellow
     glTexCoord2f(0.519, 1.0); glVertex3f( 0.6, -1.0, -0.05);
     glTexCoord2f(0.955, 1.0); glVertex3f(-0.6, -1.0, -0.05);
     glTexCoord2f(0.955, 0.0); glVertex3f(-0.6,  1.0, -0.05);
     glTexCoord2f(0.519, 0.0); glVertex3f( 0.6,  1.0, -0.05);
 
     # Left face (x = -1.0)
-    glColor3f(0.0, 0.0, 1.0);     # Blue
+    #glColor3f(0.0, 0.0, 1.0);     # Blue
     glTexCoord2f(0.473, 0.0); glVertex3f(-0.6,  1.0,  0.05);
     glTexCoord2f(0.517, 0.0); glVertex3f(-0.6,  1.0, -0.05);
     glTexCoord2f(0.517, 1.0); glVertex3f(-0.6, -1.0, -0.05);
     glTexCoord2f(0.473, 1.0); glVertex3f(-0.6, -1.0,  0.05);
 
     # Right face (x = 1.0)
-    glColor3f(1.0, 0.0, 1.0);     # Magenta
+    #glColor3f(1.0, 0.0, 1.0);     # Magenta
     glTexCoord2f(0.957, 0.0); glVertex3f(0.6,  1.0, -0.05);
     glTexCoord2f(1.0, 0.0); glVertex3f(0.6,  1.0,  0.05);
     glTexCoord2f(1.0, 1.0); glVertex3f(0.6, -1.0,  0.05);
@@ -150,7 +150,7 @@ glutInit()                                             # initialize glut
 glutInitDisplayMode(GLUT_DOUBLE); # Enable double buffered mode
 glutInitWindowSize(640, 480);   # Set the window's initial width & height
 glutInitWindowPosition(50, 50); # Position the window's initial top-left corner
-glutCreateWindow(b'waw');          # Create window with the given title
+glutCreateWindow(b'Hape Bimo Luar Biasa');          # Create window with the given title
 glutDisplayFunc(display);       # Register callback handler for window re-paint event
 glutReshapeFunc(reshape);       # Register callback handler for window re-size event
 glEnable(GL_BLEND)
