@@ -97,7 +97,7 @@ def initGL():
 
 def LoadTextures():
     #global texture
-    image = Image.open("texture.png")
+    image = Image.open("textureb.png")
     ix = image.size[0]
     iy = image.size[1]
     image = image.convert(mode='RGBA').tobytes("raw", "RGBA", 0, -1)
