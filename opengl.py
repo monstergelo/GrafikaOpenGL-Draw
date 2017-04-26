@@ -4,6 +4,8 @@ from OpenGL.GLU import *
 import math
 import time
 from PIL import Image
+from OpenGL.arrays import vbo
+from OpenGL.GL import shaders
 
 window = 0  # glut window number
 
@@ -51,23 +53,6 @@ def draw():                                            # ondraw is called all th
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)  # clear the screen
     glLoadIdentity()                                   # reset position
     refresh2d(width, height)                           # set mode to 2d
-    glColor3f(0.0, 0.0, 1.0)                           # set color to blue
-    draw_sky_background(0, 0.746, 1, 0, 0.746, 1)
-    # draw_light(1, 1, 1, 0.4, 1, 1, 1, 0.4)
-    draw_hill(0, 0, width, 300)
-    draw_circle(600, -500, 100, 850, 0.16, 0.22, 0.09, 1, 0.16, 0.22, 0.09, 1)
-    draw_tree(50, 50)
-    draw_tree(700, 50)
-    draw_tree(350, 100)
-    draw_tree(500, 200)
-    draw_tree(200, 200)
-    draw_tree(1100, 100)
-    draw_tree(900, 200)
-    draw_cloud(300, 475)
-    draw_cloud(800, 475)
-    draw_circle(600, 500, 20, 800, 1, 1, 1, 0.5, 1, 1, 1, 0)
-    draw_circle(600, 500, 100, 100, 1, 1, 1, 1, 1, 0.72, 0.07, 0.6)
-    draw_rainbow(600, 100, 100, 600, 1.5)
 
     glutSwapBuffers()
 
@@ -76,7 +61,7 @@ def initGL():
     LoadTextures()
     glEnable(GL_TEXTURE_2D)
     # Set background color to black and opaque
-    glClearColor(0.0, 0.0, 0.0, 1.0)
+    glClearColor(0.0, 0.0, 0.0, 0.0)
     glClearDepth(1.0)                   # Set background depth to farthest
     glEnable(GL_DEPTH_TEST)   # Enable depth testing for z-culling
     glDepthFunc(GL_LEQUAL)    # Set the type of depth-test
@@ -92,7 +77,7 @@ def initGL():
     # setup blending
     # Set The Blending Function For Translucency
     glBlendFunc(GL_SRC_ALPHA, GL_ONE)
-    glColor4f(1.0, 1.0, 1.0, 0.5)
+    glColor4f(1.0, 1.0, 1.0, 1.0)
 
 
 def LoadTextures():
@@ -108,6 +93,8 @@ def LoadTextures():
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1)
     glTexImage2D(GL_TEXTURE_2D, 0, 3, ix, iy, 0,
                  GL_RGBA, GL_UNSIGNED_BYTE, image)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
